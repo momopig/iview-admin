@@ -175,6 +175,16 @@ export const appRouter = [
 
         ]
     },
+    {
+        path: '/magic',
+        icon: 'android-checkbox',
+        name: 'magic',
+        title: '魔法页面',
+        component: Main,
+        children: [
+            { path: 'template-setting', title: '移动端首页模版设置', name: 'artical-publish', icon: 'compose', component: () => import('@/views/magic/template-setting.vue') },
+        ]
+    },
     // {
     //     path: '/charts',
     //     icon: 'ios-analytics',
