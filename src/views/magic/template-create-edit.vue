@@ -40,8 +40,8 @@
         </div>
         <div class="bottom-area">
             <div class="btn-area">
-                <Button type="primary">模版保存</Button>
-                <Button type="primary" v-if="">模版另存为</Button>
+                <Button type="primary" @click="saveTemplate">模版保存</Button>
+                <Button type="primary" v-if="operation === 'edit'">模版另存为</Button>
             </div>
         </div>
     </div>
@@ -52,6 +52,7 @@ import tinymce from 'tinymce';
 export default {
     name: 'template-create-edit',
     data () {
+        
         return {
             componentList: [
                 {name: 'Banner', props: [{name: 'banner_prop_1', type: 'string'}]},
@@ -60,7 +61,9 @@ export default {
             ],
             previewList: [],
             currentTemplate: {},
-            operation: this.$rout
+            operation: this.$route.query.operation,
+            templateId: this.$route.query.templateId
+            
         }
     },
     methods: {
@@ -105,6 +108,11 @@ export default {
     },
     mounted () {
        
+    },
+    watch: {
+        '$route' () {
+            this.init();
+        }
     }
 };
 </script>
