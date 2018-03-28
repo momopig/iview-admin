@@ -45,5 +45,9 @@ module.exports = merge(webpackBaseConfig, {
                 'text-editor.vue'
             ]
         })
-    ]
+    ],
+    devServer: {
+        port: '8081',
+        open: 'Google Chrome'
+    }
 });
