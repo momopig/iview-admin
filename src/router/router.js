@@ -67,6 +67,17 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
+        path: '/magic',
+        icon: 'android-checkbox',
+        name: 'magic',
+        title: '魔法页面',
+        component: Main,
+        children: [
+            { path: 'template-list', title: '移动端-首页模版列表', name: 'list', icon: 'compose', component: () => import('@/views/magic/template-list.vue') },
+            { path: 'template-create-edit', title: '移动端-首页模版设置', name: 'create-edit', icon: 'compose', component: () => import('@/views/magic/template-create-edit.vue') }
+        ]
+    },
+    {
         path: '/access',
         icon: 'key',
         name: 'access',
@@ -173,17 +184,6 @@ export const appRouter = [
             { path: 'artical-publish', title: '文章发布', name: 'artical-publish', icon: 'compose', component: () => import('@/views/form/article-publish/article-publish.vue') },
             { path: 'workflow', title: '工作流', name: 'workflow', icon: 'arrow-swap', component: () => import('@/views/form/work-flow/work-flow.vue') }
 
-        ]
-    },
-    {
-        path: '/magic',
-        icon: 'android-checkbox',
-        name: 'magic',
-        title: '魔法页面',
-        component: Main,
-        children: [
-            { path: 'template-create-edit', title: '首页模版设置', name: 'create-edit', icon: 'compose', component: () => import('@/views/magic/template-create-edit.vue') },
-            { path: 'template-list', title: '首页模版列表', name: 'list', icon: 'compose', component: () => import('@/views/magic/template-list.vue') }
         ]
     },
     // {

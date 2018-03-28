@@ -39,23 +39,20 @@ export default {
                     title: '序号',
                     type: 'index',
                     align: 'center',
-                    width: 300,
                     editable: true
                 },
                 {
                     title: '模版名称',
                     align: 'center',
                     key: 'name',
-                    width: 430,
                     editable: true
                 },
                 {
                     title: '操作',
                     align: 'center',
-                    width: 236,
                     key: 'handle',
                     handle: ['edit', 'delete']
-                }
+                } 
             ]
 
         }
