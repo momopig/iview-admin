@@ -182,7 +182,8 @@ export const appRouter = [
         title: '魔法页面',
         component: Main,
         children: [
-            { path: 'template-setting', title: '移动端首页模版设置', name: 'artical-publish', icon: 'compose', component: () => import('@/views/magic/template-setting.vue') },
+            { path: 'template-create-edit', title: '首页模版设置', name: 'create-edit', icon: 'compose', component: () => import('@/views/magic/template-create-edit.vue') },
+            { path: 'template-list', title: '首页模版列表', name: 'list', icon: 'compose', component: () => import('@/views/magic/template-list.vue') }
         ]
     },
     // {

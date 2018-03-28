@@ -75,6 +75,7 @@
                             </div>
                         </Col>
                         <Modal :width="900" v-model="showCurrentTableData">
+                            <i-button @click="show">Click me!</i-button>
                             <can-edit-table refs="table5" v-model="editInlineAndCellData" :columns-list="showCurrentColumns"></can-edit-table>
                         </Modal>
                     </Row>

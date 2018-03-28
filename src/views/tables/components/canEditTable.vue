@@ -20,6 +20,8 @@ const editButton = (vm, h, currentRow, index) => {
         },
         on: {
             'click': () => {
+                window.location.href = `#/magic/template-create-edit?operation=edit&templateId=${currentRow.id}`
+
                 if (!currentRow.editting) {
                     if (currentRow.edittingCell) {
                         for (let name in currentRow.edittingCell) {

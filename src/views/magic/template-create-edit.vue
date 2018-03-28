@@ -1,20 +1,21 @@
 <style lang="less">
     @import '../../styles/common.less';
-    @import './template-setting.less';
+    @import './template-create-edit.less';
 </style>
 
 <template>
     <div class="setting-page">
-        <div class="components-area">
-            <div class="title">组件区域</div>
-            <div class="content">
-                <div class="component-item"
-                    v-for="item in componentList"
-                    @click="addNewTemplate(item)"
-                >{{ item.name }}</div>
+        <div class="top-area">
+            <div class="components-area">
+                <div class="title">组件区域</div>
+                <div class="content">
+                    <div class="component-item"
+                        v-for="item in componentList"
+                        @click="addNewTemplate(item)"
+                    >{{ item.name }}</div>
+                </div>
             </div>
-        </div>
-        <div class="preview-area">
+            <div class="preview-area">
                 <div class="title">预览区域</div>
                 <div class="content">
                     <div class="template-item"
@@ -25,8 +26,8 @@
                         <span class="btn-delete" @click="removeTemplate(index, $event)">x</span>
                     </div>
                 </div>
-        </div>
-        <div class="config-area">
+            </div>
+            <div class="config-area">
                 <div class="title">配置区域</div>
                 <div class="content">
 
@@ -35,6 +36,13 @@
                         <input type="text" v-model="currentTemplate.props[key]" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="bottom-area">
+            <div class="btn-area">
+                <Button type="primary">模版保存</Button>
+                <Button type="primary" v-if="">模版另存为</Button>
+            </div>
         </div>
     </div>
 </template>
@@ -42,7 +50,7 @@
 <script>
 import tinymce from 'tinymce';
 export default {
-    name: 'template-setting',
+    name: 'template-create-edit',
     data () {
         return {
             componentList: [
@@ -51,7 +59,8 @@ export default {
                 {name: 'Topic', props: [{name: 'topic_prop_1', type: 'string'}]}
             ],
             previewList: [],
-            currentTemplate: {}
+            currentTemplate: {},
+            operation: this.$rout
         }
     },
     methods: {
