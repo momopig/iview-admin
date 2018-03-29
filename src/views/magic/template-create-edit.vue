@@ -18,13 +18,17 @@
             <div class="preview-area">
                 <div class="title">预览区域</div>
                 <div class="content">
-                    <div class="template-item"
-                        v-for="(item, index) in previewList"
-                        @click="configTemplateProps(item)"
-                    > 
-                        <span>{{ item.name }}</span>
-                        <span class="btn-delete" @click="removeTemplate(index, $event)">x</span>
-                    </div>
+                    <draggable v-model="previewList" :options="{group:'people'}" @start="drag=true" @end="drag=false">
+                    <!-- <div v-for="element in myArray" :key="element.id">{{element.name}}</div> -->
+                        <div class="template-item"
+                            v-for="(item, index) in previewList"
+                            @click="configTemplateProps(item)"
+                        > 
+                            <span>{{ item.name }}</span>
+                            <span class="btn-delete" @click="removeTemplate(index, $event)">x</span>
+                        </div>
+                    </draggable>
+   
                 </div>
             </div>
             <div class="config-area">
@@ -48,9 +52,14 @@
 </template>
 
 <script>
-import tinymce from 'tinymce';
+import tinymce from 'tinymce'
+import draggable from 'vuedraggable'
+
 export default {
     name: 'template-create-edit',
+    components: {
+        draggable
+    },
     data () {
         
         return {
