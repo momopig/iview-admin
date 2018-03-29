@@ -2,10 +2,19 @@
     background: #fff;
     padding: 20px 10px;
     .top-area {
+        .title {
+            label {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+    .center-area {
         display: flex;
         justify-content: space-between;
     
         background: #fff;
+        margin-top: 20px;
         .components-area {
             width: 160px;
             border: 1px solid black;
@@ -42,6 +51,7 @@
                         position: absolute;
                         top: 0;
                         right: 0;
+                        z-index: 20;
                         line-height: normal;
         
                         font-size: 24px;
@@ -55,12 +65,18 @@
             border: 1px solid black;
             .content {
                 width: 300px;
+                padding: 20px 10px;
             }
         }
 
         .title {
             font-size: 20px;
             border-bottom: 1px solid black;
+        }
+        .img-banner {
+            width: 100%;
+            height: 100%;
+            vertical-align: bottom;
         }
     }
     .bottom-area {
