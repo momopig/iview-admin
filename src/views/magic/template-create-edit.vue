@@ -21,7 +21,7 @@
             <div class="preview-area">
                 <div class="title">预览区域</div>
                 <div class="content">
-                    <draggable v-model="previewList" :options="{group:'people'}" @start="drag=true" @end="drag=false">
+                    <draggable v-model="currentTemplate.previewList" :options="{group:'people'}" @start="drag=true" @end="drag=false">
                     <!-- <div v-for="element in myArray" :key="element.id">{{element.name}}</div> -->
                         <div class="template-item"
                             v-for="(item, index) in currentTemplate.previewList"
@@ -190,7 +190,6 @@ export default {
             // 另存为时，去掉template原有的id
 
                 delete newTemplate.id
-            }
             // 调用保存模版的接口(创建和编辑共用一个接口，检查到有id则为更新，无则为新建)
             // createOrEditTemplate('/api/template/createOrEdit', this.currentTemplate)
             this.$Message.success({
