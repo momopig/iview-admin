@@ -1,21 +1,22 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config.js');
-const fs = require('fs');
-const package = require('../package.json');
 
-fs.open('./build/env.js', 'w', function(err, fd) {
-    const buf = 'export default "development";';
-    fs.write(fd, buf, 0, buf.length, 0, function(err, written, buffer) {});
-});
+const package = require('../package.json');
+const project = require('../project.config');
 
 module.exports = merge(webpackBaseConfig, {
+    entry: {
+        main: ['./src/main.js']
+    },
     devtool: '#source-map',
     output: {
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, './../dist/'),
+        publicPath: '/',
         filename: '[name].js',
         chunkFilename: '[name].chunk.js'
     },
@@ -31,6 +32,7 @@ module.exports = merge(webpackBaseConfig, {
         new HtmlWebpackPlugin({
             title: 'iView admin v' + package.version,
             filename: '../index.html',
+            template: path.resolve(__dirname, './../src/app.vue'),
             inject: false
         }),
         new CopyWebpackPlugin([
