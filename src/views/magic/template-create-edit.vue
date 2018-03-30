@@ -6,7 +6,10 @@
 <template>
     <div class="setting-page">
         <div class="top-area">
-            <div class="title"><label>当前模版名称：</label>{{ currentTemplate.name}}</div>
+            <div class="title" v-if="operation === 'edit'">
+                <label>当前模版名称：</label>
+                <input v-model="currentTemplate.name">
+            </div>
         </div>
         <div class="center-area">
             <div class="components-area">
@@ -141,7 +144,13 @@ export default {
 
                 // todo: 调用保存模版的接口(创建和编辑共用一个接口，检查到有id则为更新，无则为新建)
                 // createOrEditTemplate('/api/template/createOrEdit', this.currentTemplate)
-                
+                if (this.currentTemplate.name === '' || this.currentTemplate.name === undefined || this.currentTemplate.name === null) {
+                    this.$Message.error({
+                        content: '模版名称不能为空'
+                    })
+                    return
+                }
+                console.log('后端需存储的模版:' + JSON.stringify(this.currentTemplate))
                 this.$Message.success({
                     content: '保存成功！'
                 })
@@ -191,7 +200,19 @@ export default {
 
                 delete newTemplate.id
             // 调用保存模版的接口(创建和编辑共用一个接口，检查到有id则为更新，无则为新建)
-            // createOrEditTemplate('/api/template/createOrEdit', this.currentTemplate)
+            // createOrEditTemplate('/api/template/createOrEdit', newTemplate)
+            
+            if (newTemplate.name === '' || newTemplate.name === undefined || newTemplate.name === null) {
+                this.$Message.error({
+                    content: '模版名称不能为空'
+                })
+                let _this = this
+                setTimeout(()=>{
+                    _this.showModal = true
+                })
+                return
+            }
+            console.log('后端需存储的模版:' + JSON.stringify(newTemplate))
             this.$Message.success({
                 content: '保存成功！'
             })
